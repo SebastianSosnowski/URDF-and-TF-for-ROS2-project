@@ -445,4 +445,33 @@
 	  <axis xyz="0 1 0"/>
 	</joint>
 
+<!-- Laser scanner -->
+  <link name="laser_scan_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://barista_robot_description/meshes/slamtec_rplidar_s1.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+
+    <collision>
+       <origin rpy="0 0 0" xyz="0 0 0.0204"/>
+      <geometry>
+        <cylinder length="0.051" radius="0.027745"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.01"/>
+      <origin rpy="0 0 0" xyz="0 0 0.0255"/>
+      <inertia ixx="4.0919625625e-06" ixy="0" ixz="0" iyy="4.0919625625e-06" iyz="0" izz="3.848925125e-06"/>
+    </inertial>
+  </link>
+
+  <joint name="laser_scan_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.1335 0.0 0.0775"/>
+    <parent link="chassis"/>
+    <child link="laser_scan_link"/>
+  </joint>
+  
 </robot>
