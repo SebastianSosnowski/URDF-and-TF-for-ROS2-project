@@ -7,7 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Links1
         - /TF1
       Splitter Ratio: 0.5
     Tree Height: 553
@@ -22,6 +21,7 @@ Panels:
   - Class: rviz_common/Views
     Expanded:
       - /Current View1
+      - /Orbit1
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz_common/Time
@@ -77,6 +77,26 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        rod_back_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rod_back_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rod_front_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rod_front_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -96,7 +116,15 @@ Visualization Manager:
           Value: true
         chassis:
           Value: true
-      Marker Scale: 1
+        rod_back_left:
+          Value: true
+        rod_back_right:
+          Value: true
+        rod_front_left:
+          Value: true
+        rod_front_right:
+          Value: true
+      Marker Scale: 0.5
       Name: TF
       Show Arrows: true
       Show Axes: true
@@ -104,7 +132,14 @@ Visualization Manager:
       Tree:
         base_link:
           chassis:
-            {}
+            rod_back_left:
+              {}
+            rod_back_right:
+              {}
+            rod_front_left:
+              {}
+            rod_front_right:
+              {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -168,11 +203,31 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.33539822697639465
+      Pitch: 0.6503980159759521
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.7153981328010559
-    Saved: ~
+      Yaw: 5.7185821533203125
+    Saved:
+      - Class: rviz_default_plugins/Orbit
+        Distance: 1.6611336469650269
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: 0.03941621258854866
+          Y: 0.09197081625461578
+          Z: -0.06325644999742508
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.05000000074505806
+        Invert Z Axis: false
+        Name: Orbit
+        Near Clip Distance: 0.009999999776482582
+        Pitch: 0.6503980159759521
+        Target Frame: base_link
+        Value: Orbit (rviz)
+        Yaw: 5.7185821533203125
 Window Geometry:
   Displays:
     collapsed: false
