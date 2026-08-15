@@ -223,7 +223,7 @@
 	</link>
 
 	<joint name="chassis_to_drive_wheel_left_joint" type="continuous">
-		<origin xyz="0 0.1335 -0.0775" rpy="0 0 0"/>
+		<origin xyz="0 0.1883 -0.0775" rpy="0 0 0"/>
 		<parent link="chassis"/>
 		<child link="drive_wheel_left"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
@@ -255,11 +255,194 @@
 	</link>
 
 	<joint name="chassis_to_drive_wheel_right_joint" type="continuous">
-		<origin xyz="0 -0.1335 -0.0775" rpy="0 0 0"/>
+		<origin xyz="0 -0.1883 -0.0775" rpy="0 0 0"/>
 		<parent link="chassis"/>
 		<child link="drive_wheel_right"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
     <limit effort="10000" velocity="1000"/>
     <joint_properties damping="1.0" friction="1.0"/>
 	</joint>
+
+<!-- Front Caster Wheel -->
+	<link name="front_yaw_link">
+		<visual>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<cylinder length="0.001" radius="0.0045000000000000005"/>
+			</geometry>
+			<material name="blue"/>
+		</visual>
+
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.001" radius="0.0045000000000000005"/>
+			</geometry>
+		</collision>
+
+		<inertial>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>
+		</inertial>
+	</link>
+
+	<joint name="front_yaw_joint" type="continuous">
+		<origin xyz="0.1335 0 -0.0775" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="front_yaw_link"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="front_roll_link">
+		<visual>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<cylinder length="0.001" radius="0.0045000000000000005"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.001" radius="0.0045000000000000005"/>
+			</geometry>
+		</collision>
+
+		<inertial>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>		
+		</inertial>
+	</link>
+
+	<joint name="front_roll_joint" type="continuous">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="front_yaw_link"/>
+		<child link="front_roll_link"/>
+		<axis xyz="1 0 0"/>
+	</joint>
+
+	<link name="front_pitch_link">
+		<visual>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<sphere radius="0.0352"/>
+			</geometry>
+			<material name="green_dark"/>
+		</visual>
+
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<sphere radius="0.0352"/>
+			</geometry>
+		</collision>
+
+		<inertial>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia ixx="4e-08" ixy="0" ixz="0" iyy="4e-08" iyz="0" izz="4e-08"/>
+		</inertial>
+	</link>
+
+	<joint name="front_pitch_joint" type="continuous">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="front_roll_link"/>
+		<child link="front_pitch_link"/>
+	  <axis xyz="0 1 0"/>
+	</joint>
+
+<!-- Back Caster Wheel -->
+	<link name="back_yaw_link">
+		<visual>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<cylinder length="0.001" radius="0.0045000000000000005"/>
+			</geometry>
+			<material name="blue"/>
+		</visual>
+
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.001" radius="0.0045000000000000005"/>
+			</geometry>
+		</collision>
+
+		<inertial>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>
+		</inertial>
+	</link>
+
+	<joint name="back_yaw_joint" type="continuous">
+		<origin xyz="-0.1335 0 -0.0775" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="back_yaw_link"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="back_roll_link">
+		<visual>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<cylinder length="0.001" radius="0.0045000000000000005"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.001" radius="0.0045000000000000005"/>
+			</geometry>
+		</collision>
+
+		<inertial>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>		
+		</inertial>
+	</link>
+
+	<joint name="back_roll_joint" type="continuous">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="back_yaw_link"/>
+		<child link="back_roll_link"/>
+		<axis xyz="1 0 0"/>
+	</joint>
+
+	<link name="back_pitch_link">
+		<visual>
+		<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<sphere radius="0.0352"/>
+			</geometry>
+			<material name="green_dark"/>
+		</visual>
+
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<sphere radius="0.0352"/>
+			</geometry>
+		</collision>
+
+		<inertial>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<mass value="0.001"/>
+			<inertia ixx="4e-08" ixy="0" ixz="0" iyy="4e-08" iyz="0" izz="4e-08"/>
+		</inertial>
+	</link>
+
+	<joint name="back_pitch_joint" type="continuous">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="back_roll_link"/>
+		<child link="back_pitch_link"/>
+	  <axis xyz="0 1 0"/>
+	</joint>
+
 </robot>
