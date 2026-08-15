@@ -77,6 +77,16 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        cup_holder_tray:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        drive_wheel_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         rod_back_left:
           Alpha: 1
           Show Axes: false
@@ -116,6 +126,8 @@ Visualization Manager:
           Value: true
         chassis:
           Value: true
+        cup_holder_tray:
+          Value: true
         rod_back_left:
           Value: true
         rod_back_right:
@@ -126,12 +138,14 @@ Visualization Manager:
           Value: true
       Marker Scale: 0.5
       Name: TF
-      Show Arrows: true
+      Show Arrows: false
       Show Axes: true
       Show Names: true
       Tree:
         base_link:
           chassis:
+            cup_holder_tray:
+              {}
             rod_back_left:
               {}
             rod_back_right:
@@ -204,7 +218,7 @@ Visualization Manager:
       Name: Current View
       Near Clip Distance: 0.009999999776482582
       Pitch: 0.6503980159759521
-      Target Frame: <Fixed Frame>
+      Target Frame: base_link
       Value: Orbit (rviz)
       Yaw: 5.7185821533203125
     Saved:
