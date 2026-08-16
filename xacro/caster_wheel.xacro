@@ -1,0 +1,3 @@
+<xacro:macro name="caster_wheel">
+    <!-- ... macro body ... -->
+</xacro:macro>

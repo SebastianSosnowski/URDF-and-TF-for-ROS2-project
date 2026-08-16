@@ -1,0 +1,3 @@
+<xacro:macro name="cup_holder_tray">
+    <!-- ... macro body ... -->
+</xacro:macro>

@@ -1,0 +1,3 @@
+<xacro:macro name="standoff_rod">
+    <!-- ... macro body ... -->
+</xacro:macro>
