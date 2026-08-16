@@ -3,9 +3,10 @@
   <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
   <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro"/>
   <xacro:include filename="$(find barista_robot_description)/xacro/standoff_rod.xacro"/>
+  <xacro:include filename="$(find barista_robot_description)/xacro/cup_holder_tray.xacro"/>
 
 <!-- Properties -->
-  <xacro:property name="body_lenght" value="0.155"/>
+  <xacro:property name="body_length" value="0.155"/>
   <xacro:property name="body_radius" value="0.178"/>
 
   <material name="blue">
@@ -20,7 +21,7 @@
 		<visual>
 		<origin rpy="0 0 0" xyz="0 0 0" />
 			<geometry>
-				<cylinder length="${body_lenght}" radius="${body_radius}"/>
+				<cylinder length="${body_length}" radius="${body_radius}"/>
 			</geometry>
 			<material name="blue"/>
 		</visual>
@@ -28,7 +29,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="${body_lenght}" radius="${body_radius}"/>
+        <cylinder length="${body_length}" radius="${body_radius}"/>
       </geometry>
     </collision>
 
@@ -116,6 +117,7 @@
 		<child link="back_pitch_link"/>
 	  <axis xyz="0 1 0"/>
 	</joint>
+
 <!-- Standoff rods -->
   <xacro:standoff_rod rod_link_name="rod_front_left"/>
 	
@@ -149,4 +151,12 @@
 		<child link="rod_back_right"/>
 	</joint>
 
+<!-- Cup holder tray -->
+  <xacro:cup_holder_tray link_name="cup_holder_tray"/>
+
+	<joint name="cup_holder_tray_joint" type="fixed">
+		<origin xyz="0 0 0.3425" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="cup_holder_tray"/>
+	</joint>
 </robot>
