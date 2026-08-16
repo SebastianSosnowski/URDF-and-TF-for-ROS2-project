@@ -223,7 +223,8 @@
 	</link>
 
 	<joint name="left_wheel_joint" type="continuous">
-		<origin xyz="0 0.1883 -0.0775" rpy="0 0 0"/>
+		<!-- <origin xyz="0 0.1883 -0.0775" rpy="0 0 0"/> -->
+    <origin xyz="0 0.1335 -0.0775" rpy="0 0 0"/>
 		<parent link="chassis"/>
 		<child link="left_wheel"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
@@ -255,7 +256,9 @@
 	</link>
 
 	<joint name="right_wheel_joint" type="continuous">
-		<origin xyz="0 -0.1883 -0.0775" rpy="0 0 0"/>
+		<!-- <origin xyz="0 -0.1883 -0.0775" rpy="0 0 0"/> -->
+		<origin xyz="0 -0.1335 -0.0775" rpy="0 0 0"/>
+
 		<parent link="chassis"/>
 		<child link="right_wheel"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
@@ -500,7 +503,7 @@
         name="gz::sim::systems::DiffDrive">
         <left_joint>left_wheel_joint</left_joint>
         <right_joint>right_wheel_joint</right_joint>
-        <wheel_separation>0.3766</wheel_separation>
+        <wheel_separation>0.267</wheel_separation>
         <wheel_radius>0.0352</wheel_radius>
         <topic>cmd_vel</topic>
         <publish_odom>true</publish_odom>
