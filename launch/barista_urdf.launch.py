@@ -5,7 +5,7 @@ from launch import LaunchDescription
 from launch.substitutions import Command, PathJoinSubstitution, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 # this is the function launch  system will look for
@@ -110,6 +110,12 @@ def generate_launch_description():
         ],
         output="screen",
     )
+    delayed_spawn = TimerAction(
+        period=3.0,
+        actions=[
+            gz_spawn_entity
+        ]
+    )
 
     # create and return launch description object
     return LaunchDescription(
@@ -120,9 +126,9 @@ def generate_launch_description():
             declare_spawn_z,
             declare_spawn_yaw,
             
+            gz_sim,     
             robot_state_publisher_node,
             rviz_node,
-            gz_sim,     
-            gz_spawn_entity
+            delayed_spawn
         ]
     )
