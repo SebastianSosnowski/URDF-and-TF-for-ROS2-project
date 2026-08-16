@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Properties -->
+  <xacro:property name="laser_radius" value="0.027745"/>
+  <xacro:property name="laser_length" value="0.051"/>
+
+  <xacro:macro name="laser_scanner" params="link_name">
+  <link name="${link_name}">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://barista_robot_description/meshes/slamtec_rplidar_s1.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+
+    <collision>
+       <origin rpy="0 0 0" xyz="0 0 0.0204"/>
+      <geometry>
+        <cylinder length="${laser_length}" radius="${laser_radius}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.01"/>
+      <origin rpy="0 0 0" xyz="0 0 0.0255"/>
+      <inertia ixx="4.0919625625e-06" ixy="0" ixz="0" iyy="4.0919625625e-06" iyz="0" izz="3.848925125e-06"/>
+    </inertial>
+  </link>
+  </xacro:macro>
+
+</robot>
