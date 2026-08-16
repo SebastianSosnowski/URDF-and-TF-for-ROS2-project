@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
   <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
   <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro"/>
+  <xacro:include filename="$(find barista_robot_description)/xacro/standoff_rod.xacro"/>
 
 <!-- Properties -->
   <xacro:property name="body_lenght" value="0.155"/>
@@ -115,4 +116,37 @@
 		<child link="back_pitch_link"/>
 	  <axis xyz="0 1 0"/>
 	</joint>
+<!-- Standoff rods -->
+  <xacro:standoff_rod rod_link_name="rod_front_left"/>
+	
+  <joint name="rod_front_left_joint" type="fixed">
+		<origin xyz="0.089 0.089 0.1875" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="rod_front_left"/>
+	</joint>
+
+  <xacro:standoff_rod rod_link_name="rod_front_right"/>
+	
+	<joint name="rod_front_right_joint" type="fixed">
+		<origin xyz="0.089 -0.089 0.1875" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="rod_front_right"/>
+	</joint>
+
+  <xacro:standoff_rod rod_link_name="rod_back_left"/>
+
+	<joint name="rod_back_left_joint" type="fixed">
+		<origin xyz="-0.089 0.089 0.1875" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="rod_back_left"/>
+	</joint>
+
+  <xacro:standoff_rod rod_link_name="rod_back_right"/>
+
+	<joint name="rod_back_right_joint" type="fixed">
+		<origin xyz="-0.089 -0.089 0.1875" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="rod_back_right"/>
+	</joint>
+
 </robot>
