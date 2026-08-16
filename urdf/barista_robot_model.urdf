@@ -223,7 +223,6 @@
 	</link>
 
 	<joint name="left_wheel_joint" type="continuous">
-		<!-- <origin xyz="0 0.1883 -0.0775" rpy="0 0 0"/> -->
     <origin xyz="0 0.1335 -0.0775" rpy="0 0 0"/>
 		<parent link="chassis"/>
 		<child link="left_wheel"/>
@@ -256,9 +255,7 @@
 	</link>
 
 	<joint name="right_wheel_joint" type="continuous">
-		<!-- <origin xyz="0 -0.1883 -0.0775" rpy="0 0 0"/> -->
 		<origin xyz="0 -0.1335 -0.0775" rpy="0 0 0"/>
-
 		<parent link="chassis"/>
 		<child link="right_wheel"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>

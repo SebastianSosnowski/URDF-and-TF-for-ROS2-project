@@ -8,39 +8,36 @@ from launch_ros.parameter_descriptions import ParameterValue
 from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
-# this is the function launch  system will look for
+import xacro
+
+# this is the function launch system will look for
 def generate_launch_description():
 
     ####### DATA INPUT ##########
-    urdf_file = 'barista_robot_model.urdf'
-    #xacro_file = "box_bot.xacro"
-    package_description = "barista_robot_description"
+    # urdf_file = 'barista_robot_model.urdf'
+    xacro_file = "barista_robot_model.urdf.xacro"
+    package_description = get_package_share_directory('barista_robot_description')
     gz_sim_pkg = get_package_share_directory('ros_gz_sim')
-
     ####### DATA INPUT END ##########
-    print("Fetching URDF ==>")
-    robot_desc_path = os.path.join(get_package_share_directory(package_description), "urdf", urdf_file)
 
     # Robot State Publisher
 
-    robot_description = ParameterValue(
-        Command(['xacro ', robot_desc_path]),
-        value_type=str
-    )
+    # convert XACRO file into URDF
+    xacro_file = os.path.join(package_description, 'xacro', xacro_file)
+    doc = xacro.parse(open(xacro_file))
+    xacro.process_doc(doc)
+    params = {'use_sim_time': True, 'robot_description': doc.toxml()}
 
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher_node',
         output='screen',
-        parameters=[{
-            'use_sim_time': True,
-            'robot_description': robot_description
-        }]
+        parameters=[params]
     )
 
     # RVIZ Configuration
-    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'barista_bot.rviz')
+    rviz_config_dir = os.path.join(package_description, 'rviz', 'barista_bot.rviz')
 
 
     rviz_node = Node(

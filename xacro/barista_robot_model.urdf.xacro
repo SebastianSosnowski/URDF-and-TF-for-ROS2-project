@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
+  <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
 
 <!-- Properties -->
   <xacro:property name="body_lenght" value="0.155"/>
@@ -40,6 +41,30 @@
 		<origin xyz="0 0 0.0" rpy="0 0 0"/>
 		<parent link="base_link"/>
 		<child link="chassis"/>
+	</joint>
+
+<!-- Wheel Left -->
+  <xacro:drive_wheel wheel_link_name="left_wheel" />
+
+	<joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0 0.1335 -0.0775" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="left_wheel"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+	</joint>
+
+<!-- Wheel Right -->
+  <xacro:drive_wheel wheel_link_name="right_wheel"/>
+
+	<joint name="right_wheel_joint" type="continuous">
+		<origin xyz="0 -0.1335 -0.0775" rpy="0 0 0"/>
+		<parent link="chassis"/>
+		<child link="right_wheel"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
 	</joint>
 
 </robot>
