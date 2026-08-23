@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotRick1
+        - /RobotMorty1
       Splitter Ratio: 0.5
     Tree Height: 553
   - Class: rviz_common/Selection
@@ -111,6 +112,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        laser_scan_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         left_wheel:
           Alpha: 1
           Show Axes: false
@@ -160,20 +166,94 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /morty/robot_description
-      Enabled: false
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        back_pitch_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        back_roll_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        back_yaw_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        chassis:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        cup_holder_tray:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_pitch_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_roll_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_yaw_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rod_back_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rod_back_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rod_front_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rod_front_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
       Name: RobotMorty
       TF Prefix: morty
       Update Interval: 0
-      Value: false
+      Value: true
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
       Enabled: true
@@ -201,6 +281,8 @@ Visualization Manager:
         morty/front_yaw_link:
           Value: true
         morty/left_wheel:
+          Value: true
+        morty/odom:
           Value: true
         morty/right_wheel:
           Value: true
@@ -230,7 +312,11 @@ Visualization Manager:
           Value: true
         rick/front_yaw_link:
           Value: true
+        rick/laser_scan_link:
+          Value: true
         rick/left_wheel:
+          Value: true
+        rick/odom:
           Value: true
         rick/right_wheel:
           Value: true
@@ -242,36 +328,67 @@ Visualization Manager:
           Value: true
         rick/rod_front_right:
           Value: true
+        world:
+          Value: true
       Marker Scale: 0.5
       Name: TF
       Show Arrows: false
       Show Axes: true
       Show Names: true
       Tree:
-        rick/base_link:
-          rick/chassis:
-            rick/back_yaw_link:
-              rick/back_roll_link:
-                rick/back_pitch_link:
+        world:
+          morty/odom:
+            morty/base_link:
+              morty/chassis:
+                morty/back_yaw_link:
+                  morty/back_roll_link:
+                    morty/back_pitch_link:
+                      {}
+                morty/cup_holder_tray:
                   {}
-            rick/cup_holder_tray:
-              {}
-            rick/front_yaw_link:
-              rick/front_roll_link:
-                rick/front_pitch_link:
+                morty/front_yaw_link:
+                  morty/front_roll_link:
+                    morty/front_pitch_link:
+                      {}
+                morty/left_wheel:
                   {}
-            rick/left_wheel:
-              {}
-            rick/right_wheel:
-              {}
-            rick/rod_back_left:
-              {}
-            rick/rod_back_right:
-              {}
-            rick/rod_front_left:
-              {}
-            rick/rod_front_right:
-              {}
+                morty/right_wheel:
+                  {}
+                morty/rod_back_left:
+                  {}
+                morty/rod_back_right:
+                  {}
+                morty/rod_front_left:
+                  {}
+                morty/rod_front_right:
+                  {}
+          rick/odom:
+            rick/base_link:
+              rick/chassis:
+                rick/back_yaw_link:
+                  rick/back_roll_link:
+                    rick/back_pitch_link:
+                      {}
+                rick/cup_holder_tray:
+                  {}
+                rick/front_yaw_link:
+                  rick/front_roll_link:
+                    rick/front_pitch_link:
+                      {}
+                rick/laser_scan_link:
+                  {}
+                rick/left_wheel:
+                  {}
+                rick/right_wheel:
+                  {}
+                rick/rod_back_left:
+                  {}
+                rick/rod_back_right:
+                  {}
+                rick/rod_front_left:
+                  {}
+                rick/rod_front_right:
+                  {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -311,7 +428,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: rick/chassis
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -354,46 +471,46 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.6611336469650269
+      Distance: 3.1391701698303223
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.03941621258854866
-        Y: 0.09197081625461578
-        Z: -0.06325644999742508
+        X: 0.03415894880890846
+        Y: 0.04175751283764839
+        Z: -0.008529510349035263
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6503980159759521
-      Target Frame: base_link
+      Pitch: 0.5653980374336243
+      Target Frame: world
       Value: Orbit (rviz)
-      Yaw: 5.7185821533203125
+      Yaw: 3.1085808277130127
     Saved:
       - Class: rviz_default_plugins/Orbit
-        Distance: 1.6611336469650269
+        Distance: 3.1391701698303223
         Enable Stereo Rendering:
           Stereo Eye Separation: 0.05999999865889549
           Stereo Focal Distance: 1
           Swap Stereo Eyes: false
           Value: false
         Focal Point:
-          X: 0.03941621258854866
-          Y: 0.09197081625461578
-          Z: -0.06325644999742508
+          X: 0.03415894880890846
+          Y: 0.04175751283764839
+          Z: -0.008529510349035263
         Focal Shape Fixed Size: true
         Focal Shape Size: 0.05000000074505806
         Invert Z Axis: false
         Name: Orbit
         Near Clip Distance: 0.009999999776482582
-        Pitch: 0.6503980159759521
-        Target Frame: base_link
+        Pitch: 0.5653980374336243
+        Target Frame: world
         Value: Orbit (rviz)
-        Yaw: 5.7185821533203125
+        Yaw: 3.1085808277130127
 Window Geometry:
   Displays:
     collapsed: false

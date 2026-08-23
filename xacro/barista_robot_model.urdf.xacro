@@ -99,6 +99,7 @@
 		<parent link="front_roll_link"/>
 		<child link="front_pitch_link"/>
 	  <axis xyz="0 1 0"/>
+    <dynamics damping="1.0" friction="1.0"/>
 	</joint>
 
 <!-- Back Caster Wheel -->
@@ -123,6 +124,7 @@
 		<parent link="back_roll_link"/>
 		<child link="back_pitch_link"/>
 	  <axis xyz="0 1 0"/>
+    <dynamics damping="1.0" friction="1.0"/>
 	</joint>
 
 <!-- Standoff rods -->

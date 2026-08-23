@@ -90,6 +90,22 @@ def generate_launch_description():
         output='screen'
     )
 
+    world_to_robot = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='world_to_robot',
+        namespace=robot_name,
+        arguments=[
+            '--x', x,
+            '--y', y,
+            '--z', z,
+            '--yaw', yaw,
+            '--frame-id', 'world',
+            '--child-frame-id', [robot_name, '/odom'],
+        ],
+        output='screen'
+    )
+
     # Spawn robot in Gazebo
 
     spawn_robot = Node(
@@ -126,5 +142,6 @@ def generate_launch_description():
         declare_include_laser,
 
         rsp,
+        world_to_robot,
         delayed_spawn,
     ])
