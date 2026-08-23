@@ -78,14 +78,13 @@ def generate_launch_description():
         name='gz_bridge',
         arguments=[
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
+            '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
 
-            f'/{robot_rick}/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
             f'/{robot_rick}/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
             f'/{robot_rick}/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             f'/{robot_rick}/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
             f'/{robot_rick}/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
 
-            f'/{robot_morty}/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
             f'/{robot_morty}/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
             f'/{robot_morty}/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             f'/{robot_morty}/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
