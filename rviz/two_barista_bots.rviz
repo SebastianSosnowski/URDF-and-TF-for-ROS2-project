@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /RobotRick1
       Splitter Ratio: 0.5
     Tree Height: 553
   - Class: rviz_common/Selection
@@ -144,7 +145,7 @@ Visualization Manager:
         Inertia: false
         Mass: false
       Name: RobotRick
-      TF Prefix: ""
+      TF Prefix: rick
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -170,7 +171,7 @@ Visualization Manager:
         Inertia: false
         Mass: false
       Name: RobotMorty
-      TF Prefix: ""
+      TF Prefix: morty
       Update Interval: 0
       Value: false
       Visual Enabled: true
