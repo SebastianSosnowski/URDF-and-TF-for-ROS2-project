@@ -45,7 +45,7 @@ def generate_launch_description():
             'y': '-0.5',
             'z': '0.2',
             'yaw': '3.14',
-            'include_laser': 'false',
+            'include_laser': 'true',
         }.items()
     )
 
@@ -66,7 +66,7 @@ def generate_launch_description():
             'y': '0.5',
             'z': '0.2',
             'yaw': '3.14',
-            'include_laser': 'false',
+            'include_laser': 'true',
         }.items()
     )
 

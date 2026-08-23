@@ -220,14 +220,6 @@
   </gazebo>
 
   <xacro:if value="${include_laser}">
-  <!-- Enable Sensors in Gazebo Sim -->
-      <gazebo>
-        <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
-          <!-- use ogre2 if ogre v2.x is installed, otherwise use ogre -->
-          <render_engine>ogre2</render_engine>
-        </plugin>
-      </gazebo>
-
   <!-- Laser Scanner Plugin -->
     <gazebo reference="laser_scan_link">
       <sensor type="gpu_lidar" name="gpu_lidar">
