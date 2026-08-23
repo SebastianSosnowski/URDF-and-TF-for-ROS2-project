@@ -26,6 +26,7 @@ def generate_launch_description():
     # Launch arguments
 
     robot_name = LaunchConfiguration('robot_name')
+    body_color = LaunchConfiguration('body_color')
     x = LaunchConfiguration('x')
     y = LaunchConfiguration('y')
     z = LaunchConfiguration('z')
@@ -35,6 +36,11 @@ def generate_launch_description():
     declare_robot_name = DeclareLaunchArgument(
         'robot_name',
         default_value='barista_bot'
+    )
+
+    declare_body_color = DeclareLaunchArgument(
+        'body_color',
+        default_value='0.0 0.0 1.0 1.0'
     )
 
     declare_x = DeclareLaunchArgument(
@@ -69,7 +75,8 @@ def generate_launch_description():
             'xacro ',
             xacro_file,
             ' include_laser:=', include_laser,
-            ' robot_name:=', robot_name
+            ' robot_name:=', robot_name,
+            ' body_color:=\'', body_color, '\'',
         ]),
         value_type=str
     )
@@ -135,6 +142,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         declare_robot_name,
+        declare_body_color,
         declare_x,
         declare_y,
         declare_z,

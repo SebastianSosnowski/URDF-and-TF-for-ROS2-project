@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_bot_$(arg robot_name)">
   <xacro:arg name="robot_name" default="barista_bot"/>
   <xacro:arg name="include_laser" default="true"/>
+  <xacro:arg name="body_color" default="0.0 0.0 1.0 1.0"/>
 
   <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
   <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro"/>
@@ -12,13 +13,19 @@
 <!-- Properties -->
   <xacro:property name="include_laser" value="$(arg include_laser)"/>
   <xacro:property name="robot_name" value="$(arg robot_name)"/>
+  <xacro:property name="body_color" value="$(arg body_color)"/>
 
   <xacro:property name="body_length" value="0.155"/>
   <xacro:property name="body_radius" value="0.178"/>
 
-  <material name="blue">
-      <color rgba="0.0 0.0 1.0 1"/>
-  </material>
+
+<material name="blue">
+    <color rgba="0.0 0.0 1.0 1.0"/>
+</material>
+
+<material name="robot_body_material">
+    <color rgba="${body_color}"/>
+</material>
 
   <link name="base_link">
 	</link>
@@ -30,7 +37,7 @@
 			<geometry>
 				<cylinder length="${body_length}" radius="${body_radius}"/>
 			</geometry>
-			<material name="blue"/>
+			<material name="robot_body_material"/>
 		</visual>
 
     <collision>

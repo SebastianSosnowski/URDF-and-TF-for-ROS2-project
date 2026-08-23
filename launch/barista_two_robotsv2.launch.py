@@ -46,6 +46,7 @@ def generate_launch_description():
             'z': '0.2',
             'yaw': '3.14',
             'include_laser': 'true',
+            'body_color': '1.0 0.0 0.0 1.0',    # Red
         }.items()
     )
 
@@ -67,6 +68,7 @@ def generate_launch_description():
             'z': '0.2',
             'yaw': '3.14',
             'include_laser': 'true',
+            'body_color': '0.0 0.0 1.0 1.0',    # Blue
         }.items()
     )
 

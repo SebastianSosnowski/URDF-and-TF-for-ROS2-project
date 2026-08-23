@@ -11,7 +11,7 @@
 			<geometry>
 				<cylinder length="${tray_length}" radius="${tray_radius}"/>
 			</geometry>
-			<material name="blue"/>
+			<material name="robot_body_material"/>
 		</visual>
 
     <collision>
