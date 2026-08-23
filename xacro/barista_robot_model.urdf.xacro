@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_bot_$(arg robot_name)">
+  <xacro:arg name="robot_name" default="barista_bot"/>
   <xacro:arg name="include_laser" default="true"/>
 
   <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
@@ -9,7 +10,8 @@
   <xacro:include filename="$(find barista_robot_description)/xacro/laser_scanner.xacro"/>
 
 <!-- Properties -->
-<xacro:property name="include_laser" value="$(arg include_laser)"/>
+  <xacro:property name="include_laser" value="$(arg include_laser)"/>
+  <xacro:property name="robot_name" value="$(arg robot_name)"/>
 
   <xacro:property name="body_length" value="0.155"/>
   <xacro:property name="body_radius" value="0.178"/>
@@ -181,7 +183,7 @@
   <gazebo>
     <plugin filename="gz-sim-joint-state-publisher-system"
             name="gz::sim::systems::JointStatePublisher">
-        <topic>/joint_states</topic>
+        <topic>${robot_name}/joint_states</topic>
         <update_rate>30</update_rate>
         <!-- Publish the state of these joints -->
         <joint_name>left_wheel_joint</joint_name>
@@ -204,14 +206,14 @@
       <right_joint>right_wheel_joint</right_joint>
       <wheel_separation>0.267</wheel_separation>
       <wheel_radius>0.0352</wheel_radius>
-      <topic>cmd_vel</topic>
+      <topic>${robot_name}/cmd_vel</topic>
       <publish_odom>true</publish_odom>
       <publish_odom_tf>true</publish_odom_tf>
       <publish_wheel_tf>true</publish_wheel_tf>
-      <odom_topic>odom</odom_topic>
-      <tf_topic>tf</tf_topic>
-      <frame_id>odom</frame_id>
-      <child_frame_id>base_link</child_frame_id>
+      <odom_topic>${robot_name}/odom</odom_topic>
+      <tf_topic>${robot_name}/tf</tf_topic>
+      <frame_id>${robot_name}/odom</frame_id>
+      <child_frame_id>${robot_name}/base_link</child_frame_id>
     </plugin>
   </gazebo>
 
@@ -228,11 +230,11 @@
     <gazebo reference="laser_scan_link">
       <sensor type="gpu_lidar" name="gpu_lidar">
         <pose relative_to='laser_scan_link'>0 0 0 0 0 0</pose>
-        <gz_frame_id>laser_scan_link</gz_frame_id>
+        <gz_frame_id>${robot_name}/laser_scan_link</gz_frame_id>
         <always_on>1</always_on>
         <visualize>true</visualize>
         <update_rate>100</update_rate>
-        <topic>scan</topic>
+        <topic>${robot_name}/scan</topic>
         <ray>
           <scan>
             <horizontal>

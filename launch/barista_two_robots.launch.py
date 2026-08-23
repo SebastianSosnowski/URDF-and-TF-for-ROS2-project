@@ -27,7 +27,7 @@ def generate_launch_description():
     # parse args
     declare_include_laser = DeclareLaunchArgument(
         'include_laser',
-        default_value='true'
+        default_value='false'
     )
 
     xacro_path = os.path.join(
@@ -121,7 +121,7 @@ def generate_launch_description():
     )
 
     # RVIZ Configuration
-    rviz_config_dir = os.path.join(package_description, 'rviz', 'barista_bot.rviz')
+    rviz_config_dir = os.path.join(package_description, 'rviz', 'two_barista_bots.rviz')
 
     rviz_node = Node(
             package='rviz2',
@@ -171,11 +171,12 @@ def generate_launch_description():
         name="gz_bridge",
         arguments=[
             "/clock" + "@rosgraph_msgs/msg/Clock" + "[gz.msgs.Clock",
-            "/tf" + "@tf2_msgs/msg/TFMessage" + "[gz.msgs.Pose_V",
+            "/rick/tf" + "@tf2_msgs/msg/TFMessage" + "[gz.msgs.Pose_V",
             "/rick/cmd_vel" + "@geometry_msgs/msg/Twist" + "@gz.msgs.Twist",
             "/rick/odom" + "@nav_msgs/msg/Odometry" + "[gz.msgs.Odometry",
             "/rick/joint_states" + "@sensor_msgs/msg/JointState" + "[gz.msgs.Model",
             "/rick/scan" + "@sensor_msgs/msg/LaserScan" + "[gz.msgs.LaserScan",
+            "/morty/tf" + "@tf2_msgs/msg/TFMessage" + "[gz.msgs.Pose_V",
             "/morty/cmd_vel" + "@geometry_msgs/msg/Twist" + "@gz.msgs.Twist",
             "/morty/odom" + "@nav_msgs/msg/Odometry" + "[gz.msgs.Odometry",
             "/morty/joint_states" + "@sensor_msgs/msg/JointState" + "[gz.msgs.Model",
