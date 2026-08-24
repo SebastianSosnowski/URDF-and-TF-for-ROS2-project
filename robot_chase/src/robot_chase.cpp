@@ -3,6 +3,7 @@
 #include <cmath>
 #include <string>
 
+#include "geometry_msgs/msg/transform_stamped.hpp"
 #include "tf2_ros/buffer.h"
 #include "tf2_ros/transform_listener.h"
 #include <geometry_msgs/msg/twist.hpp>
@@ -20,7 +21,7 @@ public:
     // Init command Publisher
     command_publisher_ =
         this->create_publisher<geometry_msgs::msg::Twist>("/rick/cmd_vel", 10);
-    auto timer_period = std::chrono::milliseconds(500);
+    auto timer_period = std::chrono::milliseconds(100);
     timer_ =
         this->create_wall_timer(timer_period, [this] { timer_callback(); });
 
@@ -43,22 +44,56 @@ private:
     try {
       auto transform = tf_buffer_->lookupTransform(fixed_frame_, target_frame_,
                                                    tf2::TimePointZero);
-      RCLCPP_INFO(this->get_logger(), "Transform %s -> %s",
-                  target_frame_.c_str(), fixed_frame_.c_str());
+      RCLCPP_DEBUG(this->get_logger(), "Transform %s -> %s",
+                   target_frame_.c_str(), fixed_frame_.c_str());
 
-      RCLCPP_INFO(this->get_logger(), "Position: x=%.3f, y=%.3f, z=%.3f",
-                  transform.transform.translation.x,
-                  transform.transform.translation.y,
-                  transform.transform.translation.z);
-      RCLCPP_INFO(
+      RCLCPP_DEBUG(this->get_logger(), "Position: x=%.3f, y=%.3f, z=%.3f",
+                   transform.transform.translation.x,
+                   transform.transform.translation.y,
+                   transform.transform.translation.z);
+      RCLCPP_DEBUG(
           this->get_logger(), "Rotation: x=%.3f, y=%.3f, z=%.3f, w=%.3f",
           transform.transform.rotation.x, transform.transform.rotation.y,
           transform.transform.rotation.z, transform.transform.rotation.w);
+
+      auto action = navigate_to_goal(transform);
+      command_publisher_->publish(action);
+
     } catch (const tf2::TransformException &ex) {
       RCLCPP_INFO(this->get_logger(), "Could not transform %s to %s: %s",
                   target_frame_.c_str(), fixed_frame_.c_str(), ex.what());
       return;
     }
+  }
+
+  geometry_msgs::msg::Twist
+  navigate_to_goal(const geometry_msgs::msg::TransformStamped &transform) {
+    double x = transform.transform.translation.x;
+    double y = transform.transform.translation.y;
+
+    double error_yaw = std::atan2(y, x);
+    double error_distance = std::hypot(x, y);
+
+    double kp_yaw = 1.2;
+    double kp_distance = 1.2;
+
+    auto action = geometry_msgs::msg::Twist();
+
+    RCLCPP_INFO(this->get_logger(), "Error yaw = %.3f, Error distance = %.3f",
+                error_yaw, error_distance);
+
+    // Too close -> stop
+    if (error_distance <= 0.5) {
+      return action;
+    }
+
+    // Control rotation
+    action.angular.z = std::min(2.0, kp_yaw * error_yaw);
+
+    // Control velocity
+    action.linear.x = std::min(1.0, kp_distance * error_distance);
+
+    return action;
   }
 };
 
