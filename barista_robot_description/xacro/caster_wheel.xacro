@@ -78,5 +78,24 @@
         <inertia ixx="2.47808e-05" ixy="0" ixz="0" iyy="2.47808e-05" iyz="0" izz="2.47808e-05"/>
       </inertial>
     </link>
+
+    <gazebo reference="${prefix_link_name}_pitch_link">
+      <collision>
+        <surface>
+        <friction>
+          <ode>
+          <mu>0.5</mu>
+          <mu2>0.5</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+          <kp>10000000.0</kp>
+          <kd>10000000.0</kd>
+          </ode>
+        </contact>
+        </surface>
+      </collision>
+    </gazebo>
   </xacro:macro>
 </robot>

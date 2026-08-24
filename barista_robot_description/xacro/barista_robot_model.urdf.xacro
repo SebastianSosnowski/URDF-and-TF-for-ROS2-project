@@ -92,6 +92,8 @@
 		<parent link="chassis"/>
 		<child link="front_yaw_link"/>
 		<axis xyz="0 0 1"/>
+    <limit effort="1000.0" velocity="100.0" />
+    <dynamics damping="0.0" friction="0.1"/>
 	</joint>
 
 	<joint name="front_roll_joint" type="continuous">
@@ -99,6 +101,8 @@
 		<parent link="front_yaw_link"/>
 		<child link="front_roll_link"/>
 		<axis xyz="1 0 0"/>
+    <limit effort="1000.0" velocity="100.0" />
+    <dynamics damping="0.0" friction="0.1"/>
 	</joint>
 
 	<joint name="front_pitch_joint" type="continuous">
@@ -106,7 +110,8 @@
 		<parent link="front_roll_link"/>
 		<child link="front_pitch_link"/>
 	  <axis xyz="0 1 0"/>
-    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="1000.0" velocity="100.0" />
+    <dynamics damping="0.0" friction="0.1"/>
 	</joint>
 
 <!-- Back Caster Wheel -->
@@ -117,6 +122,8 @@
 		<parent link="chassis"/>
 		<child link="back_yaw_link"/>
 		<axis xyz="0 0 1"/>
+    <limit effort="1000.0" velocity="100.0" />
+    <dynamics damping="0.0" friction="0.1"/>
 	</joint>
 
 	<joint name="back_roll_joint" type="continuous">
@@ -124,6 +131,8 @@
 		<parent link="back_yaw_link"/>
 		<child link="back_roll_link"/>
 		<axis xyz="1 0 0"/>
+    <limit effort="1000.0" velocity="100.0" />
+    <dynamics damping="0.0" friction="0.1"/>
 	</joint>
 
 	<joint name="back_pitch_joint" type="continuous">
@@ -131,7 +140,8 @@
 		<parent link="back_roll_link"/>
 		<child link="back_pitch_link"/>
 	  <axis xyz="0 1 0"/>
-    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="1000.0" velocity="100.0" />
+    <dynamics damping="0.0" friction="0.1"/>
 	</joint>
 
 <!-- Standoff rods -->

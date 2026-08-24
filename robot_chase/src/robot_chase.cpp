@@ -88,10 +88,13 @@ private:
     }
 
     // Control rotation
-    action.angular.z = std::min(2.0, kp_yaw * error_yaw);
+    action.angular.z = std::min(1.3, kp_yaw * error_yaw);
 
     // Control velocity
-    action.linear.x = std::min(1.0, kp_distance * error_distance);
+    action.linear.x = std::min(0.8, kp_distance * error_distance);
+    RCLCPP_INFO(this->get_logger(),
+                "Action linear = %.3f, Action angular = %.3f", action.linear.x,
+                action.angular.z);
 
     return action;
   }
