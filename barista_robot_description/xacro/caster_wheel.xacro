@@ -14,7 +14,7 @@
       <visual>
       <origin rpy="0 0 0" xyz="0 0 0" />
         <geometry>
-          <cylinder length="${caster_axis_radius}" radius="${caster_axis_radius}"/>
+          <cylinder length="${caster_axis_length}" radius="${caster_axis_radius}"/>
         </geometry>
         <material name="blue"/>
       </visual>
@@ -22,7 +22,7 @@
       <collision>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <cylinder length="${caster_axis_radius}" radius="${caster_axis_radius}"/>
+          <cylinder length="${caster_axis_length}" radius="${caster_axis_radius}"/>
         </geometry>
       </collision>
 
@@ -88,12 +88,12 @@
           <mu2>0.5</mu2>
           </ode>
         </friction>
-        <contact>
+        <!-- <contact>
           <ode>
           <kp>10000000.0</kp>
           <kd>10000000.0</kd>
           </ode>
-        </contact>
+        </contact> -->
         </surface>
       </collision>
     </gazebo>

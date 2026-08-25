@@ -36,16 +36,16 @@
         <surface>
         <friction>
           <ode>
-          <mu>10.0</mu>
-          <mu2>10.0</mu2>
+          <mu>1.0</mu>
+          <mu2>1.0</mu2>
           </ode>
         </friction>
-        <contact>
+        <!-- <contact>
           <ode>
           <kp>10000000.0</kp>
           <kd>10000000.0</kd>
           </ode>
-        </contact>
+        </contact> -->
         </surface>
       </collision>
     </gazebo>

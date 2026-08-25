@@ -69,7 +69,7 @@
 		<child link="left_wheel"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
     <limit effort="10000" velocity="1000"/>
-    <joint_properties damping="1.0" friction="1.0"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
 	</joint>
 
 <!-- Wheel Right -->
@@ -81,7 +81,7 @@
 		<child link="right_wheel"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
     <limit effort="10000" velocity="1000"/>
-    <joint_properties damping="1.0" friction="1.0"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
 	</joint>
 
 <!-- Front Caster Wheel -->
@@ -187,15 +187,15 @@
 	</joint>
 
 <!-- Laser scanner -->
-<xacro:if value="${include_laser}">
-  <xacro:laser_scanner link_name="laser_scan_link"/>
+  <xacro:if value="${include_laser}">
+    <xacro:laser_scanner link_name="laser_scan_link"/>
 
-  <joint name="laser_scan_link_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.1335 0.0 0.0775"/>
-    <parent link="chassis"/>
-    <child link="laser_scan_link"/>
-  </joint>
-</xacro:if>
+    <joint name="laser_scan_link_joint" type="fixed">
+      <origin rpy="0 0 0" xyz="0.1335 0.0 0.0775"/>
+      <parent link="chassis"/>
+      <child link="laser_scan_link"/>
+    </joint>
+  </xacro:if>
 
 <!-- PLUGINS -->
 <!-- Joint State Publisher Plugin -->
