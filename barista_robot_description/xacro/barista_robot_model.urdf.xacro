@@ -87,62 +87,20 @@
 <!-- Front Caster Wheel -->
   <xacro:caster_wheel prefix_link_name="front"/>
 
-	<joint name="front_yaw_joint" type="continuous">
-		<origin xyz="0.1335 0 -0.0775" rpy="0 0 0"/>
-		<parent link="chassis"/>
-		<child link="front_yaw_link"/>
-		<axis xyz="0 0 1"/>
-    <limit effort="1000.0" velocity="100.0" />
-    <dynamics damping="0.0" friction="0.1"/>
-	</joint>
-
-	<joint name="front_roll_joint" type="continuous">
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-		<parent link="front_yaw_link"/>
-		<child link="front_roll_link"/>
-		<axis xyz="1 0 0"/>
-    <limit effort="1000.0" velocity="100.0" />
-    <dynamics damping="0.0" friction="0.1"/>
-	</joint>
-
-	<joint name="front_pitch_joint" type="continuous">
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-		<parent link="front_roll_link"/>
-		<child link="front_pitch_link"/>
-	  <axis xyz="0 1 0"/>
-    <limit effort="1000.0" velocity="100.0" />
-    <dynamics damping="0.0" friction="0.1"/>
-	</joint>
+    <joint name="front_caster_joint" type="fixed">
+    <origin xyz="0.1335 0 -0.0775" rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="front_caster_link"/>
+    </joint>
 
 <!-- Back Caster Wheel -->
   <xacro:caster_wheel prefix_link_name="back"/>
 
-	<joint name="back_yaw_joint" type="continuous">
-		<origin xyz="-0.1335 0 -0.0775" rpy="0 0 0"/>
-		<parent link="chassis"/>
-		<child link="back_yaw_link"/>
-		<axis xyz="0 0 1"/>
-    <limit effort="1000.0" velocity="100.0" />
-    <dynamics damping="0.0" friction="0.1"/>
-	</joint>
-
-	<joint name="back_roll_joint" type="continuous">
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-		<parent link="back_yaw_link"/>
-		<child link="back_roll_link"/>
-		<axis xyz="1 0 0"/>
-    <limit effort="1000.0" velocity="100.0" />
-    <dynamics damping="0.0" friction="0.1"/>
-	</joint>
-
-	<joint name="back_pitch_joint" type="continuous">
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-		<parent link="back_roll_link"/>
-		<child link="back_pitch_link"/>
-	  <axis xyz="0 1 0"/>
-    <limit effort="1000.0" velocity="100.0" />
-    <dynamics damping="0.0" friction="0.1"/>
-	</joint>
+    <joint name="back_caster_joint" type="fixed">
+    <origin xyz="-0.1335 0 -0.0775" rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="back_caster_link"/>
+    </joint>
 
 <!-- Standoff rods -->
   <xacro:standoff_rod rod_link_name="rod_front_left"/>
@@ -207,12 +165,6 @@
         <!-- Publish the state of these joints -->
         <joint_name>left_wheel_joint</joint_name>
         <joint_name>right_wheel_joint</joint_name>
-        <joint_name>front_yaw_joint</joint_name>
-        <joint_name>back_yaw_joint</joint_name>
-        <joint_name>front_roll_joint</joint_name>
-        <joint_name>back_roll_joint</joint_name>
-        <joint_name>front_pitch_joint</joint_name>
-        <joint_name>back_pitch_joint</joint_name>
     </plugin>
   </gazebo>  
 
@@ -221,6 +173,7 @@
     <plugin
       filename="gz-sim-diff-drive-system"
       name="gz::sim::systems::DiffDrive">
+      <update_rate>100</update_rate>
       <left_joint>left_wheel_joint</left_joint>
       <right_joint>right_wheel_joint</right_joint>
       <wheel_separation>0.267</wheel_separation>
