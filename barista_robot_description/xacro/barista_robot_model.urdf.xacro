@@ -193,7 +193,7 @@
   <!-- Laser Scanner Plugin -->
     <gazebo reference="laser_scan_link">
       <sensor type="gpu_lidar" name="gpu_lidar">
-        <pose relative_to='laser_scan_link'>0 0 0 0 0 0</pose>
+        <pose relative_to='laser_scan_link'>0 0 0.04 0 0 0</pose>
         <gz_frame_id>${robot_name}/laser_scan_link</gz_frame_id>
         <always_on>1</always_on>
         <visualize>true</visualize>
