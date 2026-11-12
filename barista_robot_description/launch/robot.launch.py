@@ -105,7 +105,7 @@ def generate_launch_description():
         arguments=[
             '--x', x,
             '--y', y,
-            '--z', '0.0',
+            '--z', '0.0951',
             '--yaw', '0.0',
             '--frame-id', 'world',
             '--child-frame-id', [robot_name, '/odom'],
