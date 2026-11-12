@@ -7,9 +7,8 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotRick1
-        - /RobotMorty1
-        - /LaserScanRick1
         - /LaserScanRick1/Topic1
+        - /LaserScanMorty1
       Splitter Ratio: 0.5
     Tree Height: 553
   - Class: rviz_common/Selection
@@ -52,7 +51,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 0.5
+    - Alpha: 1
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
       Description File: ""
@@ -70,17 +69,7 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        back_pitch_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_yaw_link:
+        back_caster_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -99,17 +88,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        front_pitch_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_yaw_link:
+        front_caster_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -175,17 +154,7 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        back_pitch_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        back_yaw_link:
+        back_caster_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -204,17 +173,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        front_pitch_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_yaw_link:
+        front_caster_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -269,11 +228,7 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        morty/back_pitch_link:
-          Value: true
-        morty/back_roll_link:
-          Value: true
-        morty/back_yaw_link:
+        morty/back_caster_link:
           Value: true
         morty/base_link:
           Value: true
@@ -281,11 +236,7 @@ Visualization Manager:
           Value: true
         morty/cup_holder_tray:
           Value: true
-        morty/front_pitch_link:
-          Value: true
-        morty/front_roll_link:
-          Value: true
-        morty/front_yaw_link:
+        morty/front_caster_link:
           Value: true
         morty/laser_scan_link:
           Value: true
@@ -303,11 +254,7 @@ Visualization Manager:
           Value: true
         morty/rod_front_right:
           Value: true
-        rick/back_pitch_link:
-          Value: true
-        rick/back_roll_link:
-          Value: true
-        rick/back_yaw_link:
+        rick/back_caster_link:
           Value: true
         rick/base_link:
           Value: true
@@ -315,11 +262,7 @@ Visualization Manager:
           Value: true
         rick/cup_holder_tray:
           Value: true
-        rick/front_pitch_link:
-          Value: true
-        rick/front_roll_link:
-          Value: true
-        rick/front_yaw_link:
+        rick/front_caster_link:
           Value: true
         rick/laser_scan_link:
           Value: true
@@ -349,16 +292,12 @@ Visualization Manager:
           morty/odom:
             morty/base_link:
               morty/chassis:
-                morty/back_yaw_link:
-                  morty/back_roll_link:
-                    morty/back_pitch_link:
-                      {}
+                morty/back_caster_link:
+                  {}
                 morty/cup_holder_tray:
                   {}
-                morty/front_yaw_link:
-                  morty/front_roll_link:
-                    morty/front_pitch_link:
-                      {}
+                morty/front_caster_link:
+                  {}
                 morty/laser_scan_link:
                   {}
                 morty/left_wheel:
@@ -376,16 +315,12 @@ Visualization Manager:
           rick/odom:
             rick/base_link:
               rick/chassis:
-                rick/back_yaw_link:
-                  rick/back_roll_link:
-                    rick/back_pitch_link:
-                      {}
+                rick/back_caster_link:
+                  {}
                 rick/cup_holder_tray:
                   {}
-                rick/front_yaw_link:
-                  rick/front_roll_link:
-                    rick/front_pitch_link:
-                      {}
+                rick/front_caster_link:
+                  {}
                 rick/laser_scan_link:
                   {}
                 rick/left_wheel:
@@ -449,7 +384,7 @@ Visualization Manager:
       Color Transformer: Intensity
       Decay Time: 0
       Enabled: true
-      Invert Rainbow: false
+      Invert Rainbow: true
       Max Color: 255; 255; 255
       Max Intensity: 0
       Min Color: 0; 0; 0
