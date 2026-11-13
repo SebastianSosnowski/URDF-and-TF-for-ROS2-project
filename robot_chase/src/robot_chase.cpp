@@ -74,8 +74,8 @@ private:
     double error_yaw = std::atan2(y, x);
     double error_distance = std::hypot(x, y);
 
-    double kp_yaw = 1.2;
-    double kp_distance = 1.2;
+    double kp_yaw = 5.0;
+    double kp_distance = 0.5;
 
     auto action = geometry_msgs::msg::Twist();
 
@@ -83,15 +83,15 @@ private:
                 error_yaw, error_distance);
 
     // Too close -> stop
-    if (error_distance <= 0.5) {
+    if (error_distance <= 0.44) {
       return action;
     }
 
     // Control rotation
-    action.angular.z = std::min(1.3, kp_yaw * error_yaw);
+    action.angular.z = std::min(1.0, kp_yaw * error_yaw);
 
     // Control velocity
-    action.linear.x = std::min(0.8, kp_distance * error_distance);
+    action.linear.x = std::min(0.6, kp_distance * error_distance);
     RCLCPP_INFO(this->get_logger(),
                 "Action linear = %.3f, Action angular = %.3f", action.linear.x,
                 action.angular.z);
