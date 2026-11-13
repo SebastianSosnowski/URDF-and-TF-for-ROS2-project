@@ -103,7 +103,7 @@ def generate_launch_description():
     rviz_config = os.path.join(
         package_description,
         'rviz',
-        'two_barista_bots.rviz'
+        'two_barista_bots_odom.rviz'
     )
 
     rviz_node = Node(
