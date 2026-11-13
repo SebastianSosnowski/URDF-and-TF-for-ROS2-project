@@ -86,11 +86,14 @@ def generate_launch_description():
             f'/{robot_rick}/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             f'/{robot_rick}/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
             f'/{robot_rick}/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
+            f'/{robot_rick}/ground_truth_odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
 
             f'/{robot_morty}/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
             f'/{robot_morty}/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             f'/{robot_morty}/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
             f'/{robot_morty}/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
+            f'/{robot_morty}/ground_truth_odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
+
         ],
         output='screen',
     )
