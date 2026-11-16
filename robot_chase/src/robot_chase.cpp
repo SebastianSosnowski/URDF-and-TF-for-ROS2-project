@@ -1,4 +1,4 @@
-
+#include <algorithm>
 #include <chrono>
 #include <cmath>
 #include <string>
@@ -88,10 +88,12 @@ private:
     }
 
     // Control rotation
-    action.angular.z = std::min(1.0, kp_yaw * error_yaw);
+    action.angular.z = std::clamp(kp_yaw * error_yaw, -1.0, 1.0);
 
     // Control velocity
-    action.linear.x = std::min(0.6, kp_distance * error_distance);
+    action.linear.x = std::clamp(kp_distance * error_distance *
+                                     std::max(0.0, std::cos(error_yaw)),
+                                 0.0, 0.6);
     RCLCPP_INFO(this->get_logger(),
                 "Action linear = %.3f, Action angular = %.3f", action.linear.x,
                 action.angular.z);
